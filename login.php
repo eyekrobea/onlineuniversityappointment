@@ -1,22 +1,4 @@
-<?php
-// Start the session (if needed for login functionality)
-session_start();
-
-// Add any PHP logic for handling form submissions here
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['student_signin'])) {
-        // Handle student login
-        $student_id = $_POST['student_name'];
-        $student_password = $_POST['student_pass'];
-        // Add your authentication logic here
-    } elseif (isset($_POST['lecturer_signin'])) {
-        // Handle lecturer login
-        $lecturer_id = $_POST['lecturer_name'];
-        $lecturer_password = $_POST['lecturer_pass'];
-        // Add your authentication logic here
-    }
-}
-?>
+<?php require_once("config/_init_.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -242,34 +224,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         <!-- Tab Buttons -->
                         <div class="tab-buttons">
-                            <button id="student-tab" class="active">Student Sign-In</button>
+                            <button id="student-tab" >Student Sign-In</button>
                             <button id="lecturer-tab">Lecturer Sign-In</button>
                         </div>
-                        <div class="text-danger pb-2 text-center">
-                            <?php
-                            if (isset($_SESSION['message'])) {
-                                echo $_SESSION['message'];
-                                unset($_SESSION['message']);
-                            }
-                            ?>
+                        <div class="pb-2 text-center message-box">
+                            <?= $message ?? ""?>
                         </div>
 
                         <!-- Student Sign In Form -->
                         <div id="student-content" class="tab-content active">
-                            <form method="POST" class="register-form" id="student-login-form">
+                            <form method="POST" class="register-form" id="student-login-form" action="requests/auth/student-login.php">
                                 <div class="form-group">
                                     <i class="fas fa-user"></i>
-                                    <input type="text" name="student_name" id="student_name" placeholder="Student ID"
+                                    <input type="text" name="username" id="student_name" placeholder="Student ID"
                                         class="form-control" />
                                 </div>
                                 <div class="form-group">
                                     <i class="fas fa-lock"></i>
-                                    <input type="password" name="student_pass" id="student_pass" placeholder="Password"
+                                    <input type="password" name="password" id="student_name" placeholder="Password"
                                         class="form-control" />
                                 </div>
-                                <div class="form-group form-check">
-                                    <input type="checkbox" name="remember-student" id="remember-student"
-                                        class="form-check-input" />
+                                <div class="form-group">
+                                    <input type="checkbox" name="remember" id="remember-student"
+                                        class="form-check-input mr-2" />
                                     <label for="remember-student" class="form-check-label">Remember me</label>
                                 </div>
                                 <div class="form-group">
@@ -281,10 +258,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         <!-- Lecturer Sign In Form -->
                         <div id="lecturer-content" class="tab-content">
-                            <form method="POST" class="register-form" id="lecturer-login-form" action="./auth/signin.php">
+                            <form method="POST" class="register-form" id="lecturer-login-form" action="requests/auth/lecturer-login.php">
                                 <div class="form-group">
                                     <i class="fas fa-user"></i>
-                                    <input type="text" name="email" id="lecturer_name"
+                                    <input type="text" name="username" id="lecturer_name"
                                         placeholder="Lecturer ID" class="form-control" />
                                 </div>
                                 <div class="form-group">
@@ -294,7 +271,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                                 <div class="form-group form-check">
                                     <input type="checkbox" name="remember" id="remember-lecturer"
-                                        class="form-check-input" />
+                                        class="form-check-input mr-2" />
                                     <label for="remember-lecturer" class="form-check-label">Remember me</label>
                                 </div>
                                 <div class="form-group">
@@ -320,7 +297,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/js/main.js?v=1.0.1"></script>
     <!-- Custom JS -->
     <script>
         // Your JavaScript code here (unchanged)

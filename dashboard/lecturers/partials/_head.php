@@ -1,28 +1,12 @@
-<?php
-// Start the session (if not already started)
-session_start();
-
-// Unset all of the session variables
-$_SESSION = array();
-
-// Destroy the session
-session_destroy();
-
-// Set a flag to indicate successful logout (for demonstration purposes)
-$loggedOut = true;
-
-// In a real application, you might want to perform additional cleanup tasks here
-?>
-
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProBookSys - Logout</title>
+    <title>ProBookSys - Lecturer Dashboard</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        /* Your CSS styles here (unchanged) */
         :root {
             --primary-color: #1a237e;
             --secondary-color: #3f51b5;
@@ -132,21 +116,3 @@ $loggedOut = true;
         }
     </style>
 </head>
-<body>
-    <div class="container mt-5">
-        <div class="alert <?php echo $loggedOut ? 'alert-success' : 'alert-info'; ?>">
-            <h4><?php echo $loggedOut ? 'Logged Out Successfully' : 'Logging out...'; ?></h4>
-            <p><?php echo $loggedOut ? 'You have been logged out. Redirecting to the home page...' : 'You will be redirected to the login page shortly.'; ?></p>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Redirect to login page
-        setTimeout(function() {
-            window.location.href = './../../index.php'; // Change this to your actual login page
-        }, 2000);
-    </script>
-</body>
-</html>

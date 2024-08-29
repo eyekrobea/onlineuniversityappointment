@@ -62,6 +62,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST") {
             header('Location: ../sign-in.php');
         }
     }
-}
-echo 'nothing here';
+    else {
+        echo "nothing here";
+    }
 }
