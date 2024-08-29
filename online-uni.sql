@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2024 at 12:09 AM
+-- Generation Time: Aug 29, 2024 at 10:30 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -26,144 +26,64 @@ USE `online-uni`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admintable`
+-- Table structure for table `lecturers`
 --
 
-CREATE TABLE `admintable` (
-  `id` int(11) NOT NULL,
-  `username` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `appointment`
---
-
-CREATE TABLE `appointment` (
-  `username` varchar(30) NOT NULL,
-  `fname` varchar(30) NOT NULL,
-  `gender` varchar(10) NOT NULL,
-  `DID` int(11) NOT NULL,
-  `Timestamp` datetime NOT NULL,
-  `Status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lecturer`
---
-
-CREATE TABLE `lecturer` (
-  `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `gender` varchar(10) NOT NULL,
-  `dob` date NOT NULL,
-  `department` varchar(30) NOT NULL,
-  `contact` varchar(10) NOT NULL,
-  `address` varchar(40) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `lecturer_available`
---
-
-CREATE TABLE `lecturer_available` (
-  `DID` int(11) NOT NULL,
-  `day` varchar(20) NOT NULL,
-  `starttime` time NOT NULL,
-  `endtime` time NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `student`
---
-
-CREATE TABLE `student` (
-  `id` int(11) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `gender` varchar(10) NOT NULL,
-  `dob` date NOT NULL,
-  `phone` varchar(10) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(30) NOT NULL,
-  `email` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `user_id` varchar(255) NOT NULL,
+CREATE TABLE IF NOT EXISTS `lecturers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL DEFAULT '0',
-  `role` enum('admin','lecturer','student') NOT NULL DEFAULT 'student',
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `dob` datetime DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `department` varchar(255) DEFAULT NULL,
+  `faculty` varchar(255) DEFAULT NULL,
+  `bio` mediumtext DEFAULT NULL,
+  `role` varchar(50) NOT NULL DEFAULT 'lecturer',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `lecturers`
 --
 
-INSERT INTO `users` (`id`, `user_id`, `name`, `email`, `role`, `password`) VALUES
-(1, '123456', 'Daniel Botchway', 'admin@gmail.com', 'lecturer', '$2y$10$VkVKF2lWLTqi5go7CB2XC.aaq1OwZ66KUlhXR/PcQwoCZ/DYJoOU6'),
-(2, '1234567', 'Krobea Asa', 'admin@gmail.com', 'lecturer', '$2y$10$VkVKF2lWLTqi5go7CB2XC.aaq1OwZ66KUlhXR/PcQwoCZ/DYJoOU6');
+INSERT INTO `lecturers` (`id`, `name`, `email`, `password`, `username`, `dob`, `gender`, `address`, `department`, `faculty`, `bio`, `role`, `created_at`, `updated_at`) VALUES
+(1, 'Daniel Botchway', 'admin@gmail.com', '$2y$10$pfmPlX4ZxZE8bgubGJf5K..CDIr0kduZHnERVf2.mnXKiWmwEQdU6', '12345', '0000-00-00 00:00:00', 'Male', 'Hello there', 'BIT', 'FOCIS', 'Professor of Computer Science with 10 years of experience.', 'lecturer', '2024-08-29 01:15:08', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
 
 --
--- Indexes for dumped tables
+-- Table structure for table `students`
 --
 
---
--- Indexes for table `lecturer`
---
-ALTER TABLE `lecturer`
-  ADD PRIMARY KEY (`id`);
+CREATE TABLE IF NOT EXISTS `students` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `dob` datetime DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `department` varchar(255) DEFAULT NULL,
+  `faculty` varchar(255) DEFAULT NULL,
+  `bio` mediumtext DEFAULT NULL,
+  `role` varchar(50) NOT NULL DEFAULT 'student',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
+-- Dumping data for table `students`
 --
 
---
--- AUTO_INCREMENT for table `lecturer`
---
-ALTER TABLE `lecturer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `student`
---
-ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+INSERT INTO `students` (`id`, `name`, `email`, `password`, `username`, `dob`, `gender`, `address`, `department`, `faculty`, `bio`, `role`, `created_at`, `updated_at`) VALUES
+(2, 'Daniel Botchway', 'student@gmail.com', '$2y$10$J0H9aY0McuqGfwLO/1790uv.SyIjH1PtAt59F9CkbZC3vZHdyaigu', '12345', '2024-08-07 08:02:38', 'Male', 'Ghana Accra', 'BIT', 'FOCIS', 'Hello', 'student', '2024-08-29 10:02:38', '2024-08-29 10:02:38');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

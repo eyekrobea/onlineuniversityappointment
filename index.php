@@ -252,7 +252,7 @@
             <a class="nav-link" href="#contact">Contact</a>
           </li>
         </ul>
-        <a href="./sign-in.php" class="btn btn-light ms-3">Sign in</a>
+        <a href="login.php" class="btn btn-light ms-3">Sign in</a>
       </div>
     </div>
   </nav>
@@ -400,44 +400,47 @@
   </section>
 
   <footer class="text-center text-md-start text-white py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 mb-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mb-4">
         <img src="assets/images/icons.png" alt="ProBookSys" style="width: 48px; height: 48px;"> 
-  <p>This is the text that will appear alongside the image.</p>
-          <p class="mt-3">
-            ProBookSys is a premier appointment scheduling system tailored for
-            Ghana Communication Technology University. Our goal is to
-            streamline the booking process and enhance user satisfaction
-            through innovative features and a user-friendly interface.
-          </p>
-        </div>
-        <div class="col-md-3 mb-4">
-          <h5 class="mb-4">Quick Links</h5>
-          <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#features">Features</a>
-            <a href="#stats">Stats</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </div>
-        <div class="col-md-3 mb-4">
-          <h5 class="mb-4">Contact Info</h5>
-          <address>
-            <!-- Contact information -->
-            <p>
-              <i class="fas fa-map-marker-alt me-2"></i>PMB 100, Tesano,
-              Accra, Ghana
-            </p>
-            <p><i class="fas fa-envelope me-2"></i>info@gctu.edu.gh</p>
-            <p><i class="fas fa-phone me-2"></i>(+233) 302-221-412</p>
-          </address>
+        <p>This is the text that will appear alongside the image.</p>
+        <p class="mt-3">
+          ProBookSys is a premier appointment scheduling system tailored for
+          Ghana Communication Technology University. Our goal is to
+          streamline the booking process and enhance user satisfaction
+          through innovative features and a user-friendly interface.
+        </p>
+      </div>
+      <div class="col-md-3 mb-4">
+        <h5 class="mb-4">Quick Links</h5>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#features">Features</a>
+          <a href="#stats">Stats</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
         </div>
       </div>
+      <div class="col-md-3 mb-4">
+        <h5 class="mb-4">Contact Info</h5>
+        <address>
+          <p>
+            <i class="fas fa-map-marker-alt me-2"></i>PMB 100, Tesano,
+            Accra, Ghana
+          </p>
+          <p><i class="fas fa-envelope me-2"></i>info@gctu.edu.gh</p>
+          <p><i class="fas fa-phone me-2"></i>(+233) 302-221-412</p>
+        </address>
+      </div>
     </div>
-  </footer>
-
+    <div class="d-flex justify-content-end mt-4">
+      <a href="./admin-login.php" class="btn btn-light btn-sm">
+        <i class="fas fa-user-shield me-2"></i>Admin Login
+      </a>
+    </div>
+  </div>
+</footer>
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <!-- AOS JS for scroll animations -->
