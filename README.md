@@ -35,6 +35,6 @@ php -S localhost:8000
 ```
 6. Visit `http://localhost:8000` in your browser
 7. Login with the following credentials:
-- Lecturer: `id: 12345, password: password`
-- Student: `id: 123456, password: password`
+- Lecturer: `id: 12345, password: 12345`
+- Student: `id: 123456, password: 12345`
 - Admin: `id: 1234567, password: password`
